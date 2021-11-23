@@ -1,0 +1,32 @@
+*{
+    font-size: 20px;
+}
+
+font{
+    background-color: azure;
+}
+body{
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    background-color: slategray;
+}
+
+#user_name{
+    width: 400px;
+}
+
+#note{
+    width: 500px;
+    height: 500px;
+    text-align: left;
+    vertical-align: top;
+}
+
+#buttons{
+    text-align: center;
+}
+
+html{
+    background-image: url(./imgs/paper_planes.jpg);
+}
