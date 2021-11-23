@@ -57,4 +57,7 @@ function start() {
     addButton.onClick = handleAddButton;
     viewButton.onClick = handleViewButton;
     //ATTENTION: Need to add onClick functions for the edit and delete buttons.
+    //we also need submit button onlcik and intialization
 }
+
+window.onload= start;
