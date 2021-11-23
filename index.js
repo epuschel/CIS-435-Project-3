@@ -30,7 +30,7 @@ HTTP GET request for this endpoint
 app.get('/', (req, res) => {
     console.log('\n\nON THE SERVER');
     console.log('Received from client: ' + req.query.user_name + ' ' + req.query.note);
-
+    
     console.log('Sending response to the client from / ...');
     res.send(JSON.stringify({
         message : 'Username : ' + req.query.user_name + ' ' + req.query.note
