@@ -5,11 +5,12 @@ Make sure to run on terminal:
     npm i body-parser (optional)
 otherwise these modules won't work!
 */
-
+"use strict";
 const express = require('express');
 const app = express();              //Get an express object
 const cors = require('cors');       //Avoid taht nasty CORS error
 const bodyParser = require('body-parser');
+const fs = require("fs").promises;
 
 const portNum = 3000;
 
@@ -31,12 +32,25 @@ app.get('/', (req, res) => {
     res.send(JSON.stringify({
                                 message : 'Username : ' + req.query.user_name + ' ' + req.query.note
                         }));
+                        
+    //Read the filename (username.txt) and see if it exists in the Notes folder
+    fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS 435 Project 3/Notes/${user_name}.txt`, function (err, html) {
+        //If the note does not exist, create one
+        if (err) {
+            fs.writeFile(`G:/VSCode/CIS 435 Project 3/CIS 435 Project 3/Notes/${user_name}.txt`, note, err => {
+                if (!err) {
+                    return res.send("Note successfully created!");
+                }
+            });
+        }
+    });
 });
 
 app.post('/add-note', (req, res) => {
     console.log('\n\nON THE SERVER');
     console.log('writing to file: ' + req.body.userName + ' ' + req.body.uNote);
     console.log('sending response to client from /add-note ...');
+    fs.writeFile(``)
     res.send(JSON.stringify({message: 'Successfully wrote to file'}));
 });
 
