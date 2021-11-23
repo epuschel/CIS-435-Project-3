@@ -2,10 +2,14 @@
     font-size: 20px;
 }
 
+font{
+    background-color: azure;
+}
 body{
     width: 500px;
     margin: auto;
     margin-top: 50px;
+    background-color: slategray;
 }
 
 #user_name{
@@ -21,4 +25,8 @@ body{
 
 #buttons{
     text-align: center;
+}
+
+html{
+    background-image: url(./imgs/paper_planes.jpg);
 }
