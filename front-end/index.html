@@ -4,17 +4,24 @@
     <head>
         <title>Notepad Web App</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
         <script src="call-server.js"></script>
     </head>
     <body>
         Username: <input type="text" id="user_name">
-        <br>
-        Note: <input type="text" id="note">
         <br><br>
+        Note: 
+        <br> 
+        <textarea id="note"></textarea>
+        <br><br>
+
+        <div id="buttons">
+        <input type="submit" value="Submit">
         <button id="btn_add">Add</button>
         <button id="btn_view">View</button>
         <button id="btn_edit">Edit</button>
         <button id="btn_delete">Delete</button>
+        </div>
         <br><br>
         <span id="output"></span>
     </body>

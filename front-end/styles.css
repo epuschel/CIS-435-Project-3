@@ -1,0 +1,24 @@
+*{
+    font-size: 20px;
+}
+
+body{
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#user_name{
+    width: 400px;
+}
+
+#note{
+    width: 500px;
+    height: 500px;
+    text-align: left;
+    vertical-align: top;
+}
+
+#buttons{
+    text-align: center;
+}
