@@ -26,6 +26,7 @@ function handleViewButton() {
 
 function handleAddButton() {
     console.log("add button clicked");
+    //const userName = document.querySelector('#user_name').value;
     const userName = document.querySelector('#user_name').value;
     const uNote = document.querySelector('#note').value;
 
@@ -69,4 +70,4 @@ function start() {
     outputSpan = document.querySelector('#output');
 }
 
-window.onload= start();
+window.onload= start;

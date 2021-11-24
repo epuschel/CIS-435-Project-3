@@ -38,10 +38,10 @@ app.get('/', (req, res) => {
                         }));
                         
     //Read the filename (username.txt) and see if it exists in the Notes folder
-    fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS 435 Project 3/Notes/${user_name}.txt`, function (err, html) {
+    fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, function (err, html) {
         //If the note does not exist, create one
         if (err) {
-            fs.writeFile(`G:/VSCode/CIS 435 Project 3/CIS 435 Project 3/Notes/${user_name}.txt`, note, err => {
+            fs.writeFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, note, err => {
                 if (!err) {
                     return res.send("Note successfully created!");
                 }
