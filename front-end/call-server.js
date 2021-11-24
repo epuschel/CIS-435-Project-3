@@ -48,7 +48,7 @@ function handleAddButton() {
         .then(response => response.json())
         .then(jsonObject => {
             outputSpan.innerHTML = jsonObject.message;
-            console.log(jsonObject.message);            //Different from Dr. Baughs notes
+            //console.log(jsonObject.message);            //Different from Dr. Baughs notes
         });
 }
 
