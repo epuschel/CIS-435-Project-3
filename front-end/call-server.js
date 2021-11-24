@@ -1,6 +1,5 @@
 let outputSpan;     //Globally available to all functions
 
-
 function handleViewButton() {
     const userName = document.querySelector('#user_name').value;
     const uNote = document.querySelector('#note').value;
@@ -27,6 +26,7 @@ function handleViewButton() {
 function handleAddButton() {
     console.log("add button clicked");
     const userName = document.querySelector('#user_name').value;
+
     const uNote = document.querySelector('#note').value;
 
     const url = "http://localhost:3000/add-name";
@@ -39,7 +39,8 @@ function handleAddButton() {
     const fetchObject = {
         method: 'POST',
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            'Accept': 'application/json' //note from research
         },
         body: JSON.stringify(dataObject)
     };
@@ -48,7 +49,7 @@ function handleAddButton() {
         .then(response => response.json())
         .then(jsonObject => {
             outputSpan.innerHTML = jsonObject.message;
-            console.log(jsonObject.message);
+            //console.log("Test" + jsonObject.message);
         });
 }
 
@@ -69,4 +70,4 @@ function start() {
     outputSpan = document.querySelector('#output');
 }
 
-window.onload= start();
+window.onload= start;
