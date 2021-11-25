@@ -13,7 +13,7 @@ const express = require('express');
 const app = express();              //Get an express object
 const cors = require('cors');       //Avoid taht nasty CORS error
 const bodyParser = require('body-parser');
-const fs = require("fs").promises;
+const fs = require("fs");
 
 const portNum = 3000;
 
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
                         }));
                         
     //Read the filename (username.txt) and see if it exists in the Notes folder
-    fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, function (err, html) {
+    /*fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, function (err, html) {
         //If the note does not exist, create one
         if (err) {
             fs.writeFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, note, err => {
@@ -47,15 +47,23 @@ app.get('/', (req, res) => {
                 }
             });
         }
-    });
+    });*/
 });
 
 app.post('/add-note', (req, res) => {
     console.log('\n\nON THE SERVER');
     console.log('writing to file: ' + req.body.userName + ' ' + req.body.uNote);
     console.log('sending response to client from /add-note ...');
-    fs.writeFile(``)
     res.send(JSON.stringify({message: 'Successfully wrote to file'}));
+    const fname = `./${req.body.userName}.txt`;
+    const noties = req.body.uNote;
+    fs.writeFile(fname, noties, err => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(req.body.userName + ".txt written successfully!");
+    })
 });
 
 //Make server listen on a port
