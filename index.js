@@ -10,17 +10,15 @@ otherwise these modules won't work!
 */
 "use strict";
 const express = require('express');
-const app = express();              //Get an express object
-const cors = require('cors');       //Avoid taht nasty CORS error
+const app = express();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require("fs");
 
 const portNum = 3000;
 
-//Take care of CORS situation
 app.use(cors({origin: '*'}));
 
-//Allow body parsing
 app.use(express.json());
 
 /*
@@ -33,21 +31,18 @@ app.get('/', (req, res) => {
     console.log('Received from client: ' + req.query.user_name + ' ' + req.query.note);
     
     console.log('Sending response to the client from / ...');
-    res.send(JSON.stringify({
-                                message : 'Username : ' + req.query.user_name + ' ' + req.query.note
-                        }));
-                        
-    //Read the filename (username.txt) and see if it exists in the Notes folder
-    /*fs.readFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, function (err, html) {
-        //If the note does not exist, create one
+    res.send(JSON.stringify({message : 'Username : ' + req.query.user_name + ' ' + req.query.note}));
+    
+    fpath = `./${req.query.first_name}.txt`;
+    console.log(fpath);
+    fs.readFile(fpath, 'utf8', (err, content) => {
         if (err) {
-            fs.writeFile(`G:/VSCode/CIS 435 Project 3/CIS-435-Project-3/Notes/${user_name}.txt`, note, err => {
-                if (!err) {
-                    return res.send("Note successfully created!");
-                }
-            });
+            console.error(err);
+            return;
         }
-    });*/
+        console.log(content);
+        console.log("I read the file");
+    })
 });
 
 app.post('/add-note', (req, res) => {
@@ -55,14 +50,15 @@ app.post('/add-note', (req, res) => {
     console.log('writing to file: ' + req.body.userName + ' ' + req.body.uNote);
     console.log('sending response to client from /add-note ...');
     res.send(JSON.stringify({message: 'Successfully wrote to file'}));
-    const fname = `./${req.body.userName}.txt`;
-    const noties = req.body.uNote;
-    fs.writeFile(fname, noties, err => {
+    
+    const fpath = `./${req.body.userName}.txt`;
+    const content = uNote;
+    fs.writeFile(fpath, content, err => {
         if (err) {
             console.error(err);
             return;
         }
-        console.log(req.body.userName + ".txt written successfully!");
+        console.log(fpath + " written successfully!");
     })
 });
 
@@ -70,3 +66,4 @@ app.post('/add-note', (req, res) => {
 app.listen(portNum, () => {
     console.log(`listening on port ${portNum}`);
 });
+
